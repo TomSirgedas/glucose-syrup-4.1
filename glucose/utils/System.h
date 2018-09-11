@@ -21,6 +21,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #ifndef Glucose_System_h
 #define Glucose_System_h
 
+#include <Windows.h>
+
 #if defined(__linux__)
 #include <fpu_control.h>
 #endif
@@ -58,10 +60,11 @@ static inline double Glucose::cpuTime(void) {
 
 #endif
 
-// Laurent: I know that this will not compile directly under Windows... sorry for that
 static inline double Glucose::realTime() {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return (double)tv.tv_sec + (double) tv.tv_usec / 1000000; }
+    //struct timeval tv;
+    //gettimeofday(&tv, NULL);
+    //return (double)tv.tv_sec + (double) tv.tv_usec / 1000000; 
+   return GetTickCount64() / 1000.;
+}
 
 #endif

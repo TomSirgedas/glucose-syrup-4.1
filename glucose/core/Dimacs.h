@@ -80,8 +80,11 @@ static void parse_DIMACS_main(B& in, Solver& S) {
 //
 template<class Solver>
 static void parse_DIMACS(gzFile input_stream, Solver& S) {
-    StreamBuffer in(input_stream);
-    parse_DIMACS_main(in, S); }
+    //StreamBuffer in(input_stream); // stack overflow, because this allocates 1MB+ on the stack. Let's use the heap instead...
+    StreamBuffer* in = new StreamBuffer(input_stream); 
+    parse_DIMACS_main(*in, S); 
+    delete in;
+}
 
 //=================================================================================================
 }

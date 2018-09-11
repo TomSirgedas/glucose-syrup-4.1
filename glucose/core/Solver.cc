@@ -49,7 +49,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include <math.h>
 
-#include "utils/System.h"
+#include <utils/System.h>
 #include "mtl/Sort.h"
 #include "core/Solver.h"
 #include "core/Constants.h"
@@ -323,7 +323,8 @@ Solver::~Solver() {
 
 
 void Solver::write_char(unsigned char ch) {
-    if(putc_unlocked((int) ch, certifiedOutput) == EOF)
+    //if(putc_unlocked((int) ch, certifiedOutput) == EOF)
+    if(putc((int) ch, certifiedOutput) == EOF)
         exit(1);
 }
 
