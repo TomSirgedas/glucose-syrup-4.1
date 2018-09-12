@@ -10,7 +10,7 @@ int gzread( gzFile file, void* buf, unsigned int len )
 gzFile gzdopen( int fd, const char *mode )
 {
    printf( "Reading from <stdin> not supported on Windows port. Provide an input file instead. See --help" );
-   throw std::runtime_error("Reading from <stdin> not supported.");
+   exit( 1 );
    return nullptr;
 }
 
