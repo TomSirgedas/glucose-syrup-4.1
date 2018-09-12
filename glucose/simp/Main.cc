@@ -59,6 +59,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "utils/Options.h"
 #include "core/Dimacs.h"
 #include "simp/SimpSolver.h"
+#include <iostream>
 
 using namespace Glucose;
 
@@ -200,7 +201,20 @@ int main(int argc, char** argv)
         //    } }
 
         if (argc == 1)
-            printf("c Reading from standard input... Use '--help' for help.\n");
+        {
+           //printf("c Reading from standard input... Use '--help' for help.\n");
+           printf( "\n" );
+           printf( "You need to provide commandline parameters\n" );
+           printf( "\n" );
+           printf( "Try:\n" );
+           printf( "  simp in.dimacs out.txt\n" );
+           printf( "or\n");
+              printf( "  simp --help\n" );
+           printf( "\n" );
+           printf( "[Press ENTER]\n" );  // in case Windows user is running this code from Explorer instead of command line
+           std::cin.ignore();
+           exit( 1 );
+        }
 
         gzFile in = (argc == 1) ? gzdopen(0, "rb") : gzopen(argv[1], "rb");
         if (in == NULL)
