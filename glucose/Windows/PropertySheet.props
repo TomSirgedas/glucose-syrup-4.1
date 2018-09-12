@@ -5,6 +5,7 @@
     <GLUCOSE_INCLUDE>../..</GLUCOSE_INCLUDE>
     <FAKE_ZLIB_INCLUDE>../fake_zlib</FAKE_ZLIB_INCLUDE>
     <PTHREAD_INCLUDE>../pthread/include</PTHREAD_INCLUDE>
+    <PTHREAD_LIB>../pthread/lib</PTHREAD_LIB>
   </PropertyGroup>
   <PropertyGroup>
     <_PropertySheetDisplayName>GlucosePropertySheet</_PropertySheetDisplayName>
@@ -19,6 +20,9 @@
     </BuildMacro>
     <BuildMacro Include="PTHREAD_INCLUDE">
       <Value>$(PTHREAD_INCLUDE)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PTHREAD_LIB">
+      <Value>$(PTHREAD_LIB)</Value>
     </BuildMacro>
   </ItemGroup>
 </Project>

@@ -50,7 +50,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <errno.h>
 
 #include <signal.h>
-#include <zlib.h>
+//#include <zlib.h>
+#include <fake_zlib.h>
 
 
 #include "utils/System.h"
@@ -125,28 +126,28 @@ int main(int argc, char** argv)
 	        // Use signal handlers that forcibly quit until the solver will be able to respond to
         // interrupts:
 	signal(SIGINT, SIGINT_exit);
-        signal(SIGXCPU,SIGINT_exit);
+        //signal(SIGXCPU,SIGINT_exit);
 
-        // Set limit on CPU-time:
-        if (cpu_lim != INT32_MAX){
-            rlimit rl;
-            getrlimit(RLIMIT_CPU, &rl);
-            if (rl.rlim_max == RLIM_INFINITY || (rlim_t)cpu_lim < rl.rlim_max){
-                rl.rlim_cur = cpu_lim;
-                if (setrlimit(RLIMIT_CPU, &rl) == -1)
-                    printf("c WARNING! Could not set resource limit: CPU-time.\n");
-            } }
+        //// Set limit on CPU-time:
+        //if (cpu_lim != INT32_MAX){
+        //    rlimit rl;
+        //    getrlimit(RLIMIT_CPU, &rl);
+        //    if (rl.rlim_max == RLIM_INFINITY || (rlim_t)cpu_lim < rl.rlim_max){
+        //        rl.rlim_cur = cpu_lim;
+        //        if (setrlimit(RLIMIT_CPU, &rl) == -1)
+        //            printf("c WARNING! Could not set resource limit: CPU-time.\n");
+        //    } }
 
-        // Set limit on virtual memory:
-        if (mem_lim != INT32_MAX){
-            rlim_t new_mem_lim = (rlim_t)mem_lim * 1024*1024;
-            rlimit rl;
-            getrlimit(RLIMIT_AS, &rl);
-            if (rl.rlim_max == RLIM_INFINITY || new_mem_lim < rl.rlim_max){
-                rl.rlim_cur = new_mem_lim;
-                if (setrlimit(RLIMIT_AS, &rl) == -1)
-                    printf("c WARNING! Could not set resource limit: Virtual memory.\n");
-            } }
+        //// Set limit on virtual memory:
+        //if (mem_lim != INT32_MAX){
+        //    rlim_t new_mem_lim = (rlim_t)mem_lim * 1024*1024;
+        //    rlimit rl;
+        //    getrlimit(RLIMIT_AS, &rl);
+        //    if (rl.rlim_max == RLIM_INFINITY || new_mem_lim < rl.rlim_max){
+        //        rl.rlim_cur = new_mem_lim;
+        //        if (setrlimit(RLIMIT_AS, &rl) == -1)
+        //            printf("c WARNING! Could not set resource limit: Virtual memory.\n");
+        //    } }
         
         if (argc == 1)
             printf("c Reading from standard input... Use '--help' for help.\n");

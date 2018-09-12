@@ -74,15 +74,16 @@ IntOption opt_fifoSizeByCore(_parallel, "fifosize", "Size of the FIFO structure 
 BoolOption opt_dontExportDirectReusedClauses(_cunstable, "reusedClauses", "Don't export directly reused clauses", false);
 BoolOption opt_plingeling(_cunstable, "plingeling", "plingeling strategy for sharing clauses (exploratory feature)", false);
 
-#include <sys/time.h>
-#include <sys/resource.h>
-#include <unistd.h>
-
+//#include <sys/time.h>
+//#include <sys/resource.h>
+//#include <unistd.h>
+#include <Windows.h>
 
 static inline double cpuTime(void) {
-    struct rusage ru;
-    getrusage(RUSAGE_SELF, &ru);
-    return (double) ru.ru_utime.tv_sec + (double) ru.ru_utime.tv_usec / 1000000;
+    //struct rusage ru;
+    //getrusage(RUSAGE_SELF, &ru);
+    //return (double) ru.ru_utime.tv_sec + (double) ru.ru_utime.tv_usec / 1000000;   
+   return GetTickCount64() / 1000.0;
 }
 
 
@@ -258,6 +259,7 @@ void *localLaunch(void *arg) {
     (void) s->solve();
 
     pthread_exit(NULL);
+    return nullptr;
 }
 
 

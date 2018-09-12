@@ -20,32 +20,32 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{13C5CD67-C17A-4119-B114-47CBE1CF84E2}</ProjectGuid>
-    <RootNamespace>utils</RootNamespace>
+    <ProjectGuid>{FFEF2431-79BD-4577-9647-0CE741AFDEAD}</ProjectGuid>
+    <RootNamespace>parallel</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -80,8 +80,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(GLUCOSE_INCLUDE);$(FAKE_ZLIB_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PTHREAD_INCLUDE);$(FAKE_ZLIB_INCLUDE);$(GLUCOSE_INCLUDE);</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_TIMESPEC_DEFINED;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(PTHREAD_LIB)/x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pthreadVC2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -89,8 +94,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(GLUCOSE_INCLUDE);$(FAKE_ZLIB_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PTHREAD_INCLUDE);$(FAKE_ZLIB_INCLUDE);$(GLUCOSE_INCLUDE);</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_TIMESPEC_DEFINED;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(PTHREAD_LIB)/x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pthreadVC2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -100,11 +110,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(GLUCOSE_INCLUDE);$(FAKE_ZLIB_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PTHREAD_INCLUDE);$(FAKE_ZLIB_INCLUDE);$(GLUCOSE_INCLUDE);</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_TIMESPEC_DEFINED;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(PTHREAD_LIB)/x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pthreadVC2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -115,21 +128,46 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(GLUCOSE_INCLUDE);$(FAKE_ZLIB_INCLUDE)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PTHREAD_INCLUDE);$(FAKE_ZLIB_INCLUDE);$(GLUCOSE_INCLUDE);</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_TIMESPEC_DEFINED;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(PTHREAD_LIB)/x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pthreadVC2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\utils\Options.cc" />
-    <ClCompile Include="..\..\utils\System.cc" />
+    <ClCompile Include="..\..\parallel\ClausesBuffer.cc" />
+    <ClCompile Include="..\..\parallel\Main.cc" />
+    <ClCompile Include="..\..\parallel\MultiSolvers.cc" />
+    <ClCompile Include="..\..\parallel\ParallelSolver.cc" />
+    <ClCompile Include="..\..\parallel\SharedCompanion.cc" />
+    <ClCompile Include="..\..\parallel\SolverCompanion.cc" />
+    <ClCompile Include="..\..\parallel\SolverConfiguration.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\utils\Options.h" />
-    <ClInclude Include="..\..\utils\ParseUtils.h" />
-    <ClInclude Include="..\..\utils\System.h" />
+    <ClInclude Include="..\..\parallel\ClausesBuffer.h" />
+    <ClInclude Include="..\..\parallel\MultiSolvers.h" />
+    <ClInclude Include="..\..\parallel\ParallelSolver.h" />
+    <ClInclude Include="..\..\parallel\SharedCompanion.h" />
+    <ClInclude Include="..\..\parallel\SolverCompanion.h" />
+    <ClInclude Include="..\..\parallel\SolverConfiguration.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\core\core.vcxproj">
+      <Project>{164123ba-5819-44c1-9fa0-e8f206a0c09d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\fake_zlib\fake_zlib.vcxproj">
+      <Project>{9c5d2192-915d-48a7-b479-511e52121fee}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\simp\simp.vcxproj">
+      <Project>{c12b3038-2595-4a4c-b077-dd13f63f0805}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\utils\utils.vcxproj">
+      <Project>{13c5cd67-c17a-4119-b114-47cbe1cf84e2}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
