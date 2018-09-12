@@ -207,9 +207,9 @@ int main(int argc, char** argv)
            printf( "You need to provide commandline parameters\n" );
            printf( "\n" );
            printf( "Try:\n" );
-           printf( "  simp in.dimacs out.txt\n" );
+           printf( "  glucose in.dimacs out.txt\n" );
            printf( "or\n");
-              printf( "  simp --help\n" );
+              printf( "  glucose --help\n" );
            printf( "\n" );
            printf( "[Press ENTER]\n" );  // in case Windows user is running this code from Explorer instead of command line
            std::cin.ignore();
