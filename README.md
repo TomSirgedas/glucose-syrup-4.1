@@ -8,8 +8,6 @@ See this comment in `Main.cc`: `"I must admit I have to print the model of one t
 
 --------
 
-original README:
-
 Directory overview:
 ==================
 ```
@@ -22,17 +20,16 @@ LICENSE
 Changelog
 ```
 
-To build (release version: without assertions, statically linked, etc):
-======================================================================
-Like minisat....
-```
-cd { simp | parallel }
-make rs
-```
-Usage:
-======
-```
-in simp directory:      ./glucose --help
+To build:
+=========
 
-in parallel directory:  ./glucose-syrup --help
-```
+`Simp`: Set `simp` as the active project, and build/run
+
+`Parallel`: Change `simp`'s Configuration type from `Application (.exe)` to `Static Library (.lib)`. Set `parallel` as the active project, and build/run
+
+To run:
+=======
+
+`glucose --help`
+
+`glucose in.dimacs out.txt`
