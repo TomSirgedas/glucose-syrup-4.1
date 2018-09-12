@@ -1,3 +1,12 @@
+** glucose-syrup-4.1, Windows port **
+
+
+
+`Simp` works, but `Parallel` doesn't -- it doesn't output anything.
+See this comment in `Main.cc`: `"I must admit I have to print the model of one thread... But which one? FIXME !!"`
+
+--------
+
 Directory overview:
 ==================
 
