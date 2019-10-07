@@ -1,24 +1,12 @@
-Directory overview:
-==================
+glucose-syrup-4.1, Windows port
+===============================
 
-mtl/            Minisat Template Library
-core/           A core version of the solver glucose (no main here)
-simp/           An extended solver with simplification capabilities
-parallel/       A multicore version of glucose
-README
-LICENSE
-Changelog
+Only "Simp" is ported, not "Parallel".
 
-To build (release version: without assertions, statically linked, etc):
-======================================================================
-Like minisat....
+Download the prebuilt `glucose.exe` binary from the `\prebuilt_binaries` directory.
 
-cd { simp | parallel }
-make rs
+Or build `glucose.sln` yourself from the `\msvc-2017` directory.
 
-Usage:
-======
-
-in simp directory:      ./glucose --help
-
-in parallel directory:  ./glucose-syrup --help
+Updated October 6, 2019:
+- certificates should now work
+- piping input from stdin should now work
